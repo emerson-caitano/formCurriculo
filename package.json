@@ -1,0 +1,24 @@
+{
+  "name": "formcurriculo",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000f\u0000o\u0000r\u0000m\u0000C\u0000u\u0000r\u0000r\u0000i\u0000c\u0000u\u0000l\u0000o\u0000\r\u0000 \u0000",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-livereload": "^4.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emerson-caitano/formCurriculo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emerson-caitano/formCurriculo/issues"
+  },
+  "homepage": "https://github.com/emerson-caitano/formCurriculo#readme"
+}
