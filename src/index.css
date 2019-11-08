@@ -6,7 +6,17 @@ html, body {
     height: 100%;
 }
 
-
 .resumo {
     background-color: silver;
+    color: whitesmoke;
+    font-size: 14px;
+}
+
+.resumo h1{
+    font-size: 18px;
+}
+
+.section-left li {
+    list-style-type: none;
+
 }

@@ -8,5 +8,6 @@ gulp.task('server', function() {
      },
   })
 
-  gulp.watch("src/**.*").on('change', browserSync.reload);
+  gulp.watch("src/*.css").on('change', browserSync.reload);
+  gulp.watch("src/*.html").on('change', browserSync.reload);
 })
