@@ -1,15 +1,10 @@
-var gulp = require('gulp'),
-    livereload = require('gulp-livereload');
+var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
  
-// gulp.task('less', function() {
-//   gulp.src('less/*.less')
-//     .pipe(less())
-//     .pipe(gulp.dest('css'))
-//     .pipe(livereload());
-// });
- 
-gulp.task('watch', function() {
-  livereload.listen();
-  // gulp.watch('less/*.less', ['less']);
-  gulp.watch('src/**.*');
-});
+gulp.task('server', function() {
+  browserSync.init({
+     server: {
+        baseDir: 'src'
+     },
+  })
+})
