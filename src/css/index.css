@@ -54,3 +54,22 @@ html, body {
 .detalhado li{
     list-style-type: square;
 }
+
+@media (min-width: 768px) {
+    .resumo li{
+        font-size: 2em;
+        margin-bottom: -0.1em;
+    }
+
+    .detalhado h1{
+        font-size: 1.5em;
+    }
+
+    .detalhado h2{
+        font-size: 1.2em;
+    }
+
+    .detalhado h3{
+        font-size: 1em;
+    }
+}
