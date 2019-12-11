@@ -19,7 +19,7 @@ html, body {
     margin-bottom: 0.2em;
 }
 
-.resumo a:link, a:visited, a:hover, a:active{
+.resumo a:link, .resumo a:visited, .resumo a:hover, .resumo a:active{
     text-decoration: none;
     color: white;
 }
@@ -29,7 +29,7 @@ html, body {
     padding-left: 0;
 } */
 
-.resumo ul, li {
+.resumo ul, .resumo li {
     list-style-type: none;
     padding-left: 0;
 }

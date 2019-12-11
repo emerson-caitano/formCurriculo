@@ -5,7 +5,7 @@ var gulp = require('gulp'),
 gulp.task('connect-sync', function() {
   connect.server({}, function (){
     browserSync({
-      proxy: '127.0.0.1:8000',
+      proxy: '127.0.0.1/formCurriculo/src/',
       files: [
         "**/**.php",
         "**/**.css",
