@@ -1,7 +1,7 @@
 <?php require_once("cabecalho/index.php"); ?>
 
 <div class="container"> <!-- Certificado, Descrição e Link -->
-    <h1>Certificados</h1>
+    <h1>Competencias</h1>
     <form>
     <div class="row">
         <div class="form-group col-md-6">
