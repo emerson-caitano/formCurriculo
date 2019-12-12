@@ -18,7 +18,7 @@
                 <option>Graduação</option>
             </select>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-2">
             <label for="dataInicial">Data Inicio</label>
             <input type="text" class="form-control" id="dataInicial" placeholder="">
         </div>
@@ -33,7 +33,7 @@
             <input type="text" class="form-control" id="areaAcademica" placeholder="">
         </div>
         <!-- DATA FINAL SÓ APARECER QUANDO ESTIVER EM ANDAMENTO, CASO CONCLUIDO NÃO APARECER -->
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-2">
             <label for="dataFinal">Data Final</label>
             <input type="text" class="form-control" id="dataFinal" placeholder="">
         </div>
