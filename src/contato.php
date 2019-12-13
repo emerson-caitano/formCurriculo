@@ -89,7 +89,7 @@
         <td>Otto</td>
         <td>Otto</td>
     </tr>
-  </tbody>
+    </tbody>
 </table>
 
 </div>
