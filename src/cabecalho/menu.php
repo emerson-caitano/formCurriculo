@@ -14,8 +14,8 @@
                     <a class="dropdown-item" href="dadospessoais.php">Dados Pessoais</a>
                     <a class="dropdown-item" href="contato.php">Contato</a>
                     <a class="dropdown-item" href="experiencia.php">Experiência</a>
-                    <a class="dropdown-item" href="formacao.php">Formacao</a>
-                    <a class="dropdown-item" href="competencias.php">Competencias</a>
+                    <a class="dropdown-item" href="formacao.php">Formação</a>
+                    <!-- <a class="dropdown-item" href="competencias.php">Competencias</a> -->
                     <a class="dropdown-item" href="idiomas.php">Idiomas</a>
                     <a class="dropdown-item" href="certificados.php">Certificados</a>
                     <!-- <div class="dropdown-divider"></div> -->
