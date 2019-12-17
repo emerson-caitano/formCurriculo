@@ -1,4 +1,8 @@
 <?php require_once("cabecalho/index.php"); ?>
+<link rel="stylesheet" href="css/idiomas.css"></link>
+</head>
+    <body>
+        <?php require_once("cabecalho/menu.php"); ?>
 
 <div class="container">
     <h1>Idiomas</h1>

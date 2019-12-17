@@ -1,4 +1,8 @@
 <?php require_once("cabecalho/index.php"); ?>
+<link rel="stylesheet" href="css/contato.css"></link>
+</head>
+    <body>
+        <?php require_once("cabecalho/menu.php"); ?>
 
 <div class="container">
     <h1>Contato</h1>
@@ -9,9 +13,15 @@
             <input type="text" class="form-control" id="email" placeholder="seu@email.com">
         </div>
         <div class="form-group col-md-2">
-            <label for="celular">Celular / WhatsApp</label>
+            <label for="celular">Celular</label>
             <input type="text" class="form-control" id="celular" placeholder="(00)00000-0000">
-        </div>        
+        </div>
+        <div class="form-group col-md-2">
+        <label for="zap">jj </label>
+        <div class="form-control">
+        <input type="checkbox" value="" id="defaultCheck1">Sim
+        </div>
+        </div>
         <div class="form-group col-md-2">
             <label for="celular">Fixo</label>
             <input type="text" class="form-control" id="celular" placeholder="(00)0000-0000">

@@ -1,4 +1,8 @@
 <?php require_once("cabecalho/index.php"); ?>
+<link rel="stylesheet" href="css/certificado.css"></link>
+</head>
+    <body>
+        <?php require_once("cabecalho/menu.php"); ?>
 
 <div class="container"> <!-- Certificado, Descrição e Link -->
     <h1>Certificados</h1>

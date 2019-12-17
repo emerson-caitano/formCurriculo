@@ -1,4 +1,8 @@
 <?php require_once("cabecalho/index.php"); ?>
+<link rel="stylesheet" href="css/formacao.css"></link>
+</head>
+    <body>
+        <?php require_once("cabecalho/menu.php"); ?>
 
 <div class="container"> <!-- formacaoAcademica, instituicao, curso, areaAcademica, dataInicial, dataFinal -->
     <h1>Formação</h1>
