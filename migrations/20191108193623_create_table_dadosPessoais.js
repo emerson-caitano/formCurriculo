@@ -4,7 +4,7 @@ exports.up = function(knex) {
         table.increments('dadoPessoal').primary()
         table.string('nome')
         table.string('titulo')
-        table.string('localizacao') //Estado, Endereço
+        table.string('estado',2) //Estado, Endereço
     })
   };
   
