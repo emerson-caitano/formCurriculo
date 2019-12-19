@@ -1,4 +1,48 @@
+<?php 
+    // var_dump($_GET);
+    require_once("dao/db.php");
+    $mensagem = "";
+    $contato=[
+        "contato" => "",
+        "url" => "",
+        "descricao" => "",
+    ];
+    if ($_GET != NULL){
+        //salvar no banco
+        $sql = "insert into dadosPessoais (
+            contato, url, descricao, usuario
+        ) values (
+            '{$_GET["contato"]}', '{$_GET["url"]}', '{$_GET["descricao"]}', 1
+        )";
+        echo ($sql);
+        if ($mysqli->query($sql) === TRUE) {
+            $mensagem = "Salvo com sucesso";
+            $contato=[
+                "contato" => $_GET["contato"],
+                "url" => $_GET["url"],
+                "descricao" => $_GET["descricao"],
+            ];
+
+        } else{
+            $mensagem = "Erro ao salvar";
+        }
+    } else{
+        $result = $mysqli->query("select * from dadosPessoais where usuario=1");
+        $row = $result->fetch_assoc();
+        $contato=[
+            "contato" => "",
+            "url" => "",
+            "descricao" => "",
+        ];
+    
+        if ($row != NULL){
+            $contato = $row;
+        }
+    }
+?>
+
 <?php require_once("cabecalho/index.php"); ?>
+
 <link rel="stylesheet" href="css/contato.css"></link>
 </head>
     <body>

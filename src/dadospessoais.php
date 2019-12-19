@@ -42,6 +42,7 @@
 ?>
 
 <?php require_once("cabecalho/index.php"); ?>
+
 <link rel="stylesheet" href="css/dadospessoais.css"></link>
 </head>
     <body>
