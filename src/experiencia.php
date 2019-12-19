@@ -1,4 +1,60 @@
+<?php 
+    // var_dump($_GET);
+    require_once("dao/db.php");
+    $mensagem = "";
+    $experiencia=[
+        "experiencia" => "",
+        "empresa" => "",
+        "cargo" => "",
+        "dataInicial" => "",
+        "dataFinal" => "",
+        "localizacao" => "",
+        "funcoes" => "",
+    ];
+    if ($_GET != NULL){
+        //salvar no banco
+        $sql = "insert into dadosPessoais (
+            experiencia, empresa, cargo, dataInicial, dataFinal, localizacao, funcoes, usuario
+        ) values (
+            '{$_GET["experiencia"]}', '{$_GET["empresa"]}', '{$_GET["cargo"]}', '{$_GET["dataInicial"]}', '{$_GET["dataFinal"]}', '{$_GET["localizacao"]}', '{$_GET["funcoes"]}', 1
+        )";
+        echo ($sql);
+        if ($mysqli->query($sql) === TRUE) {
+            $mensagem = "Salvo com sucesso";
+            $experiencia=[
+                "experiencia" => $_GET["experiencia"],
+                "empresa" => $_GET["empresa"],
+                "cargo" => $_GET["cargo"],
+                "dataInicial" => $_GET["dataInicial"],
+                "dataFinal" => $_GET["dataFinal"],
+                "localizacao" => $_GET["localizacao"],
+                "funcoes" => $_GET["funcoes"],
+            ];
+
+        } else{
+            $mensagem = "Erro ao salvar";
+        }
+    } else{
+        $result = $mysqli->query("select * from dadosPessoais where usuario=1");
+        $row = $result->fetch_assoc();
+        $experiencia=[
+            "experiencia" => "",
+            "empresa" => "",
+            "cargo" => "",
+            "dataInicial" => "",
+            "dataFinal" => "",
+            "localizacao" => "",
+            "funcoes" => "",
+        ];
+    
+        if ($row != NULL){
+            $experiencia = $row;
+        }
+    }
+?>
+
 <?php require_once("cabecalho/index.php"); ?>
+
 <link rel="stylesheet" href="css/experiencia.css"></link>
 </head>
     <body>
