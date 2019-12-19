@@ -1,4 +1,57 @@
+<?php 
+    // var_dump($_GET);
+    require_once("dao/db.php");
+    $mensagem = "";
+    $formacao=[
+        "formacaoAcademica" => "",
+        "instituicao" => "",
+        "curso" => "",
+        "areaAcademica" => "",
+        "dataInicial" => "",
+        "dataFinal" => "",
+    ];
+    if ($_GET != NULL){
+        //salvar no banco
+        $sql = "insert into dadosPessoais (
+            formacaoAcademica, instituicao, curso, usuario
+        ) values (
+            '{$_GET["formacaoAcademica"]}', '{$_GET["instituicao"]}', '{$_GET["curso"]}', '{$_GET["areaAcademica"]}', '{$_GET["dataInicial"]}', '{$_GET["dataFinal"]}', 1
+        )";
+        echo ($sql);
+        if ($mysqli->query($sql) === TRUE) {
+            $mensagem = "Salvo com sucesso";
+            $formacao=[
+                "formacaoAcademica" => $_GET["formacaoAcademica"],
+                "instituicao" => $_GET["instituicao"],
+                "curso" => $_GET["curso"],
+                "areaAcademica" => $_GET["areaAcademica"],
+                "dataInicial" => $_GET["dataInicial"],
+                "dataFinal" => $_GET["dataFinal"],
+            ];
+
+        } else{
+            $mensagem = "Erro ao salvar";
+        }
+    } else{
+        $result = $mysqli->query("select * from dadosPessoais where usuario=1");
+        $row = $result->fetch_assoc();
+        $formacao=[
+            "formacaoAcademica" => "",
+            "instituicao" => "",
+            "curso" => "",
+            "areaAcademica" => "",
+            "dataInicial" => "",
+            "dataFinal" => "",
+        ];
+    
+        if ($row != NULL){
+            $formacao = $row;
+        }
+    }
+?>
+
 <?php require_once("cabecalho/index.php"); ?>
+
 <link rel="stylesheet" href="css/formacao.css"></link>
 </head>
     <body>
