@@ -1,4 +1,45 @@
+<?php 
+    // var_dump($_GET);
+    require_once("dao/db.php");
+    $mensagem = "";
+    $certificado=[
+        "certificados" => "",
+        "descricao" => "",
+    ];
+    if ($_GET != NULL){
+        //salvar no banco
+        $sql = "insert into dadosPessoais (
+            certificados, descricao, usuario
+        ) values (
+            '{$_GET["certificados"]}', '{$_GET["descricao"]}', 1
+        )";
+        echo ($sql);
+        if ($mysqli->query($sql) === TRUE) {
+            $mensagem = "Salvo com sucesso";
+            $certificado=[
+                "certificados" => $_GET["certificados"],
+                "descricao" => $_GET["descricao"],
+            ];
+
+        } else{
+            $mensagem = "Erro ao salvar";
+        }
+    } else{
+        $result = $mysqli->query("select * from dadosPessoais where usuario=1");
+        $row = $result->fetch_assoc();
+        $certificado=[
+            "certificados" => "",
+            "descricao" => "",
+        ];
+    
+        if ($row != NULL){
+            $certificado = $row;
+        }
+    }
+?>
+
 <?php require_once("cabecalho/index.php"); ?>
+
 <link rel="stylesheet" href="css/competencia.css"></link>
 </head>
     <body>
