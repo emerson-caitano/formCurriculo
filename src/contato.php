@@ -9,7 +9,7 @@
     ];
     if ($_GET != NULL){
         //salvar no banco
-        $sql = "insert into dadosPessoais (
+        $sql = "insert into contatos (
             contato, url, descricao, usuario
         ) values (
             '{$_GET["contato"]}', '{$_GET["url"]}', '{$_GET["descricao"]}', 1

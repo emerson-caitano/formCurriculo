@@ -13,7 +13,7 @@
     ];
     if ($_GET != NULL){
         //salvar no banco
-        $sql = "insert into dadosPessoais (
+        $sql = "insert into experiencias (
             experiencia, empresa, cargo, dataInicial, dataFinal, localizacao, funcoes, usuario
         ) values (
             '{$_GET["experiencia"]}', '{$_GET["empresa"]}', '{$_GET["cargo"]}', '{$_GET["dataInicial"]}', '{$_GET["dataFinal"]}', '{$_GET["localizacao"]}', '{$_GET["funcoes"]}', 1

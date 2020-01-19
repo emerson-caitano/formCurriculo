@@ -8,7 +8,7 @@
     ];
     if ($_GET != NULL){
         //salvar no banco
-        $sql = "insert into dadosPessoais (
+        $sql = "insert into competencias (
             certificados, descricao, usuario
         ) values (
             '{$_GET["certificados"]}', '{$_GET["descricao"]}', 1

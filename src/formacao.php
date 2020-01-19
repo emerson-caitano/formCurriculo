@@ -12,7 +12,7 @@
     ];
     if ($_GET != NULL){
         //salvar no banco
-        $sql = "insert into dadosPessoais (
+        $sql = "insert into formacoesAcademicas (
             formacaoAcademica, instituicao, curso, usuario
         ) values (
             '{$_GET["formacaoAcademica"]}', '{$_GET["instituicao"]}', '{$_GET["curso"]}', '{$_GET["areaAcademica"]}', '{$_GET["dataInicial"]}', '{$_GET["dataFinal"]}', 1
