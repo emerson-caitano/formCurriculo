@@ -54,7 +54,7 @@
     <div class="row">
         <div class="form-group col-md-6">
             <label for="certificado">Certificado</label>
-            <input type="text" class="form-control" id="certificado" placeholder="Informe a certificação recebida">
+            <input type="text" class="form-control" id="certificado" placeholder="Informe a certificação recebida" value="<?=$certificado['certificado'];?>">
         </div>
 <!-- Desenvolver acrescentar data do certificado e vencimento do mesmo -->
         <!-- <div class="form-group col-md-3">
@@ -70,11 +70,11 @@
     <div class="row">
         <div class="form-group col-md-6">
             <label for="descricao">Descrição</label>
-            <input type="text" class="form-control" id="descricao">
+            <input type="text" class="form-control" id="descricao" value="<?=$certificado['descricao'];?>">
         </div>
         <div class="form-group col-md-6">
             <label for="link">Link</label>
-            <input type="text" class="form-control" id="link" placeholder="Link do certificado http://www.curso.com/certificado/123455">
+            <input type="text" class="form-control" id="link" placeholder="Link do certificado http://www.curso.com/certificado/123455" value="<?=$certificado['link'];?>">
         </div>
     </div>
     <div class="row">
@@ -86,6 +86,8 @@
         </div>
     </div>
     </form>
+    <p><?=$mensagem;?></p>
+
 
 </br>
 <table class="table">
@@ -112,7 +114,7 @@
         <td>the Bird</td>
         <td>@Link</td>
     </tr>
-  </tbody>
+</tbody>
 </table>
 
 </div>
