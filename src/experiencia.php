@@ -69,22 +69,22 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="empresa">Empresa</label>
-                            <input type="text" class="form-control" id="empresa">
+                            <input type="text" class="form-control" id="empresa" value="<?=$experiencia['dataInicio'];?>>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="cargo">Cargo</label>
-                            <input type="text" class="form-control" id="cargo" placeholder="">
+                            <input type="text" class="form-control" id="cargo" placeholder="" value="<?=$experiencia['dataInicio'];?>>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="localizacao">Localização</label>
                             <select class="form-control" id="localizacao" placeholder="">
-                                <option>São Paulo</option>
-                                <option>Maceio</option>
-                                <option>Rio de Janeiro</option>
-                                <option>Fortaleza</option>
-                                <option>Recife</option>
+                                <option value="SP" <?php if ($experiencia['localizacao'] == "SP"){echo 'selected';}?>>São Paulo</option>
+                                <option value="AL" <?php if ($experiencia['localizacao'] == "AL"){echo 'selected';}?>>Alagoas</option>
+                                <option value="RJ" <?php if ($experiencia['localizacao'] == "RJ"){echo 'selected';}?>>Rio de Janeiro</option>
+                                <option value="CE" <?php if ($experiencia['localizacao'] == "CE"){echo 'selected';}?>>Ceara</option>
+                                <option value="PE" <?php if ($experiencia['localizacao'] == "PE"){echo 'selected';}?>>Pernambuco</option>
                             </select>
                         </div>
                     </div>
@@ -97,13 +97,13 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="dataInicial">Data Inicio</label>
-                            <input type="text" class="form-control" id="dataInicial" placeholder="00/00/0000">
+                            <input type="text" class="form-control" id="dataInicial" placeholder="00/00/0000" value="<?=$experiencia['dataInicio'];?>>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="dataFinal">Data Final</label>
-                            <input type="text" class="form-control" id="dataFinal" placeholder="00/00/0000">
+                            <input type="text" class="form-control" id="dataFinal" placeholder="00/00/0000" value="<?=$experiencia['dataFinal'];?>>
                         </div>
                     </div>
                 </div>
@@ -120,6 +120,8 @@
         </div>
     </div>
     </form>
+    <p><?=$mensagem;?></p>
+
 
 </br>
 </br>
@@ -136,25 +138,11 @@
     </thead>
     <tbody>
     <tr>
-        <td>Microsoft Corporate</td>
-        <td>Owner</td>
-        <td>Mark</td>
-        <td>00/00/0000</td>
-        <td>00/00/0000</td>
-    </tr>
-    <tr>
-        <td>Dougkariok System </td>
-        <td>Mark</td>
-        <td>Rio de Janeiro</td>
-        <td>00/00/0000</td>
-        <td>00/00/0000</td>
-    </tr>
-    <tr>
-        <td>Larry</td>
-        <td>Mark</td>
-        <td>Rio Grande do Sul</td>
-        <td>00/00/0000</td>
-        <td>00/00/0000</td>
+        <td><?php echo $experiencia['empresa']; ?></td>
+        <td><?php echo $experiencia['cargo']; ?></td>
+        <td><?php echo $experiencia['localizacao']; ?></td>
+        <td><?php echo $experiencia['dataIncial']; ?></td>
+        <td><?php echo $experiencia['dataFinal']; ?></td>
     </tr>
   </tbody>
 </table>

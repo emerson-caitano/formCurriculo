@@ -50,12 +50,12 @@
     <form>
     <div class="row">
         <div class="form-group col-md-6">
-            <label for="competencia">Competência</label>
-            <input type="text" class="form-control" id="competencia">
+            <label for="certificado">Certificado</label>
+            <input type="text" class="form-control" id="certificado" value="<?=$certificado['certificado'];?>">
         </div>
         <div class="form-group col-md-6">
             <label for="descricao">Descrição</label>
-            <input type="text" class="form-control" id="descricao" placeholder="">
+            <input type="text" class="form-control" id="descricao" placeholder="" value="<?=$certificado['descricao'];?>">
         </div>
     </div>
     <div class="row">
@@ -67,6 +67,8 @@
         </div>
     </div>
     </form>
+    <p><?=$mensagem;?></p>
+
 
 </br>
 </br>
@@ -80,16 +82,8 @@
     </thead>
     <tbody>
     <tr>
-        <td>Mark</td>
-        <td>Otto</td>
-    </tr>
-    <tr>
-        <td>Jacob</td>
-        <td>Thornton</td>
-    </tr>
-    <tr>
-        <td>Larry</td>
-        <td>the Bird</td>
+        <td><?php echo $certificado['certificados']; ?></td>
+        <td><?php echo $certificado['descricao']; ?></td>
     </tr>
   </tbody>
 </table>

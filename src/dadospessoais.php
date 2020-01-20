@@ -62,7 +62,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="estado">Informe seu estado</label>
-            <select class="form-control" name="estado" id="estado">
+            <select class="form-control" name="estado" id="estado" >
                 <option value="SP" <?php if ($dadoPessoal['estado'] == "SP"){echo 'selected';}?>>São Paulo</option>
                 <option value="AL" <?php if ($dadoPessoal['estado'] == "AL"){echo 'selected';}?>>Alagoas</option>
                 <option value="RJ" <?php if ($dadoPessoal['estado'] == "RJ"){echo 'selected';}?>>Rio de Janeiro</option>

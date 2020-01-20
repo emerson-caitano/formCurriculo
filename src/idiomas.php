@@ -80,6 +80,8 @@
         </div>
     </div>
     </form>
+    <p><?=$mensagem;?></p>
+
 
 </br>
 </br>
