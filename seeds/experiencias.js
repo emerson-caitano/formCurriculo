@@ -9,9 +9,9 @@ exports.seed = function(knex) {
           experiencia: "Jovem Aprendiz",
           empresa: "IMB SA",
           cargo: "Auxiliar Administrativo",
-          dataInicial: :
-          dataFinal: 1,
-          localizacao: 1,
+          dataInicial: "09/01/2010",
+          dataFinal: "20/12/2011",
+          localizacao: "Rio de Janeiro",
           funcoes: "Escravo de todos",
           usuario: 1
         }

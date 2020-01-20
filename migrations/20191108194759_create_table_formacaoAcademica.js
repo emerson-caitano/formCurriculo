@@ -8,9 +8,8 @@ exports.up = function(knex) {
         table.date('dataInicial')
         table.date('dataFinal')
     })
-  };
-  
-  exports.down = function(knex) {
-      return knex.schema.dropTable('formacoesAcademicas')
-  };
-  
+};
+
+exports.down = function(knex) {
+    return knex.schema.dropTable('formacoesAcademicas')
+};
