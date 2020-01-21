@@ -18,6 +18,7 @@
                     <!-- <a class="dropdown-item" href="competencias.php">Competencias</a> -->
                     <a class="dropdown-item" href="idiomas.php">Idiomas</a>
                     <a class="dropdown-item" href="certificados.php">Certificados</a>
+                    <a class="dropdown-item" href="competencias.php">Competencias</a>
                     <!-- <div class="dropdown-divider"></div> -->
                 </div>
             </li>
