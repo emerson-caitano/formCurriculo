@@ -1,3 +1,5 @@
+<!-- <?php require_once("dao/formacao.php"); ?> -->
+
 <?php 
     // var_dump($_GET);
     require_once("dao/db.php");
@@ -113,24 +115,24 @@
 <table class="table">
     <thead>
         <tr>
-        <th scope="col">Certificados</th>
-        <th scope="col">Descrição</th>
+        <th scope="col">Formação</th>
+        <th scope="col">Instituição</th>
+        <th scope="col">Curso</th>
+        <th scope="col">Area Academica</th>
+        <th scope="col">Data Inicial</th>
+        <th scope="col">Data Final</th>
         </tr>
     </thead>
     <tbody>
     <tr>
-        <td>Mark</td>
-        <td>Otto</td>
+        <td><?php echo $formacao['formacaoAcademica']; ?></td>
+        <td><?php echo $formacao['instituicao']; ?></td>
+        <td><?php echo $formacao['curso']; ?></td>
+        <td><?php echo $formacao['areaAcademica']; ?></td>
+        <td><?php echo $formacao['dataInicial']; ?></td>
+        <td><?php echo $formacao['dataFinal']; ?></td>
     </tr>
-    <tr>
-        <td>Jacob</td>
-        <td>Thornton</td>
-    </tr>
-    <tr>
-        <td>Larry</td>
-        <td>the Bird</td>
-    </tr>
-  </tbody>
+    </tbody>
 </table>
 
 </div>

@@ -1,38 +1,52 @@
+<!-- <?php require_once("dao/contato.php"); ?> -->
+
 <?php 
     // var_dump($_GET);
     require_once("dao/db.php");
     $mensagem = "";
     $contato=[
-        "contato" => "",
-        "url" => "",
-        "descricao" => "",
+        "email" => "",
+        "celular" => "",
+        "whatsapp" => "",
+        "fixo" => "",
+        "facebook" => "",
+        "linkedin" => "",
+        "telegram" => "",
     ];
     if ($_GET != NULL){
         //salvar no banco
         $sql = "insert into contatos (
-            contato, url, descricao, usuario
+            email, celular, whatsapp, fixo, facebook, linkedin, telegram, usuario
         ) values (
-            '{$_GET["contato"]}', '{$_GET["url"]}', '{$_GET["descricao"]}', 1
+            '{$_GET["email"]}', '{$_GET["celular"]}', '{$_GET["whatsapp"]}', '{$_GET["fixo"]}', '{$_GET["facebook"]}', '{$_GET["telegram"]}', 1
         )";
         echo ($sql);
         if ($mysqli->query($sql) === TRUE) {
             $mensagem = "Salvo com sucesso";
             $contato=[
-                "contato" => $_GET["contato"],
-                "url" => $_GET["url"],
-                "descricao" => $_GET["descricao"],
+                "email" => $_GET["email"],
+                "celular" => $_GET["celular"],
+                "whatsapp" => $_GET["whatsapp"],
+                "fixo" => $_GET["fixo"],
+                "facebook" => $_GET["facebook"],
+                "linkedin" => $_GET["linkedin"],
+                "telegram" => $_GET["telegram"],
             ];
 
         } else{
             $mensagem = "Erro ao salvar";
         }
     } else{
-        $result = $mysqli->query("select * from dadosPessoais where usuario=1");
+        $result = $mysqli->query("select * from contatos where usuario=1");
         $row = $result->fetch_assoc();
         $contato=[
-            "contato" => "",
-            "url" => "",
-            "descricao" => "",
+            "email" => "",
+            "celular" => "",
+            "whatsapp" => "",
+            "fixo" => "",
+            "facebook" => "",
+            "linkedin" => "",
+            "telegram" => "",
         ];
     
         if ($row != NULL){
@@ -63,12 +77,12 @@
         <div class="form-group col-md-2">
         <label for="zap">jj </label>
         <div class="form-control">
-        <input type="checkbox" value="" id="defaultCheck1">Sim
+        <input type="checkbox" value="" id="whatsapp">Sim
         </div>
         </div>
         <div class="form-group col-md-2">
             <label for="celular">Fixo</label>
-            <input type="text" class="form-control" id="celular" placeholder="(00)0000-0000">
+            <input type="text" class="form-control" id="fixo" placeholder="(00)0000-0000">
         </div>
     </div>
     <div class="row">
@@ -86,7 +100,7 @@
         </div>
         <div class="form-group col-md-3">
             <label for="github">Telegram</label>
-            <input type="text" class="form-control" id="github" placeholder="@nickname">
+            <input type="text" class="form-control" id="telegram" placeholder="@nickname">
         </div>
     </div>
     <div class="row">
@@ -108,6 +122,7 @@
         <tr>
         <th scope="col">E-mail</th>
         <th scope="col">Celular</th>
+        <th scope="col">Whatsapp</th>
         <th scope="col">Fixo</th>
         <th scope="col">Facebook</th>
         <th scope="col">LinkedIn</th>
@@ -117,31 +132,14 @@
     </thead>
     <tbody>
     <tr>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>Otto</td>
-    </tr>
-    <tr>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>Jacob</td>
-        <td>Thornton</td>
-    </tr>
-    <tr>
-        <td>Larry</td>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>the Bird</td>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>Otto</td>
+        <td><?php echo $contato['email']; ?></td>
+        <td><?php echo $contato['celular']; ?></td>
+        <td><?php echo $contato['whatsapp']; ?></td>
+        <td><?php echo $contato['fixo']; ?></td>
+        <td><?php echo $contato['facebook']; ?></td>
+        <td><?php echo $contato['linkedin']; ?></td>
+        <td><?php echo $contato['github']; ?></td>
+        <td><?php echo $contato['telegram']; ?></td>
     </tr>
     </tbody>
 </table>

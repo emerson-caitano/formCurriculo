@@ -1,42 +1,44 @@
+<!-- <?php require_once("dao/idiomas.php"); ?> -->
+
 <?php 
     // var_dump($_GET);
     require_once("dao/db.php");
     $mensagem = "";
-    $certificado=[
-        "certificado" => "",
+    $idioma=[
+        "idioma" => "",
+        "nivelIdioma" => "",
         "descricao" => "",
-        "link" => "",
     ];
     if ($_GET != NULL){
         //salvar no banco
         $sql = "insert into idiomas (
-            certificado, descricao, link, usuario
+            idioma, nivelIdioma, descricao, usuario
         ) values (
-            '{$_GET["certificado"]}', '{$_GET["descricao"]}', '{$_GET["link"]}', 1
+            '{$_GET["idioma"]}', '{$_GET["nivelIdioma"]}', '{$_GET["descricao"]}', 1
         )";
         echo ($sql);
         if ($mysqli->query($sql) === TRUE) {
             $mensagem = "Salvo com sucesso";
-            $certificado=[
-                "certificado" => $_GET["certificado"],
+            $idioma=[
+                "idioma" => $_GET["idioma"],
+                "nivelIdioma" => $_GET["nivelIdioma"],
                 "descricao" => $_GET["descricao"],
-                "link" => $_GET["link"],
             ];
 
         } else{
             $mensagem = "Erro ao salvar";
         }
     } else{
-        $result = $mysqli->query("select * from dadosPessoais where usuario=1");
+        $result = $mysqli->query("select * from idiomas where usuario=1");
         $row = $result->fetch_assoc();
-        $certificado=[
-            "certificado" => "",
+        $idioma=[
+            "idioma" => "",
+            "nivelIdioma" => "",
             "descricao" => "",
-            "link" => "",
         ];
     
         if ($row != NULL){
-            $certificado = $row;
+            $idioma = $row;
         }
     }
 ?>
@@ -57,8 +59,8 @@
             <input type="text" class="form-control" id="idioma" placeholder="Informe o idioma">
         </div>
         <div class="form-group col-md-3">
-            <label for="exampleFormControlSelect1">Nível</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <label for="nivelIdioma">Nível</label>
+            <select class="form-control" id="nivelIdioma">
             <option>Básico</option>
             <option>Intermediário</option>
             <option>Fluente</option>

@@ -1,23 +1,25 @@
+<!-- <?php require_once("dao/certificado.php"); ?> -->
+
 <?php 
     // var_dump($_GET);
     require_once("dao/db.php");
     $mensagem = "";
-    $certificados=[
-        "certificado" => "",
+    $certificado=[
+        "certificados" => "",
         "descricao" => "",
         "link" => "",
     ];
     if ($_GET != NULL){
         //salvar no banco
         $sql = "insert into certificados (
-            certificado, descricao, link, usuario
+            certificados, descricao, link, usuario
         ) values (
             '{$_GET["certificado"]}', '{$_GET["descricao"]}', '{$_GET["link"]}', 1
         )";
         echo ($sql);
         if ($mysqli->query($sql) === TRUE) {
             $mensagem = "Salvo com sucesso";
-            $certificados=[
+            $certificado=[
                 "certificado" => $_GET["certificado"],
                 "descricao" => $_GET["descricao"],
                 "link" => $_GET["link"],
@@ -27,16 +29,16 @@
             $mensagem = "Erro ao salvar";
         }
     } else{
-        $result = $mysqli->query("select * from dadosPessoais where usuario=1");
-        $row = $result->fetch_assoc();
-        $certificados=[
+        $result = $mysqli->query("select * from certificados where usuario=1");
+        // $row = $result->fetch_assoc();
+        $certificado=[
             "certificado" => "",
             "descricao" => "",
             "link" => "",
         ];
     
         if ($row != NULL){
-            $certificados = $row;
+            $certificado = $row;
         }
     }
 ?>
@@ -54,7 +56,7 @@
     <div class="row">
         <div class="form-group col-md-6">
             <label for="certificado">Certificado</label>
-            <input type="text" class="form-control" id="certificado" placeholder="Informe a certificação recebida" value="<?=$certificados['certificado'];?>">
+            <input type="text" class="form-control" id="certificado" placeholder="Informe a certificação recebida" value="<?=$certificado['certificado'];?>">
         </div>
 <!-- Desenvolver acrescentar data do certificado e vencimento do mesmo -->
         <!-- <div class="form-group col-md-3">
@@ -70,11 +72,11 @@
     <div class="row">
         <div class="form-group col-md-6">
             <label for="descricao">Descrição</label>
-            <input type="text" class="form-control" id="descricao" value="<?=$certificados['descricao'];?>">
+            <input type="text" class="form-control" id="descricao" value="<?=$certificado['descricao'];?>">
         </div>
         <div class="form-group col-md-6">
             <label for="link">Link</label>
-            <input type="text" class="form-control" id="link" placeholder="Link do certificado http://www.curso.com/certificado/123455" value="<?=$certificados['link'];?>">
+            <input type="text" class="form-control" id="link" placeholder="Link do certificado http://www.curso.com/certificado/123455" value="<?=$certificado['link'];?>">
         </div>
     </div>
     <div class="row">
@@ -99,13 +101,20 @@
         </tr>
     </thead>
     <tbody>
-    <tr>
-        <td><?php echo $certificado['certificado']; ?></td>
-        <td><?php echo $certificado['descricao']; ?></td>
-        <td><?php echo $certificado['link']; ?></td>
-    </tr>
-</tbody>
+        <tr>
+            <td><?php echo $certificado['certificado']; ?></td>
+            <td><?php echo $certificado['descricao']; ?></td>
+            <td><?php echo $certificado['link']; ?></td>
+        </tr>
+    </tbody>
 </table>
+
+<?php
+var_dump($certificado);
+if ($row != NULL){
+            $certificado = $row;
+        }
+?>
 
 </div>
 

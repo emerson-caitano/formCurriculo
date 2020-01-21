@@ -1,23 +1,25 @@
+<!-- <?php require_once("dao/competencia.php"); ?> -->
+
 <?php 
     // var_dump($_GET);
     require_once("dao/db.php");
     $mensagem = "";
-    $certificado=[
-        "certificados" => "",
+    $competencia=[
+        "competencia" => "",
         "descricao" => "",
     ];
     if ($_GET != NULL){
         //salvar no banco
         $sql = "insert into competencias (
-            certificados, descricao, usuario
+            competencia, descricao, usuario
         ) values (
-            '{$_GET["certificados"]}', '{$_GET["descricao"]}', 1
+            '{$_GET["competencia"]}', '{$_GET["descricao"]}', 1
         )";
         echo ($sql);
         if ($mysqli->query($sql) === TRUE) {
             $mensagem = "Salvo com sucesso";
-            $certificado=[
-                "certificados" => $_GET["certificados"],
+            $competencia=[
+                "competencia" => $_GET["competencia"],
                 "descricao" => $_GET["descricao"],
             ];
 
@@ -25,15 +27,15 @@
             $mensagem = "Erro ao salvar";
         }
     } else{
-        $result = $mysqli->query("select * from dadosPessoais where usuario=1");
+        $result = $mysqli->query("select * from competencias where usuario=1");
         $row = $result->fetch_assoc();
         $certificado=[
-            "certificados" => "",
+            "competencia" => "",
             "descricao" => "",
         ];
     
         if ($row != NULL){
-            $certificado = $row;
+            $competencia = $row;
         }
     }
 ?>
@@ -50,12 +52,12 @@
     <form>
     <div class="row">
         <div class="form-group col-md-6">
-            <label for="certificado">Certificado</label>
-            <input type="text" class="form-control" id="certificado" value="<?=$certificado['certificado'];?>">
+            <label for="certificado">Competencias</label>
+            <input type="text" class="form-control" id="certificado" value="<?=$competencia['competencia'];?>">
         </div>
         <div class="form-group col-md-6">
             <label for="descricao">Descrição</label>
-            <input type="text" class="form-control" id="descricao" placeholder="" value="<?=$certificado['descricao'];?>">
+            <input type="text" class="form-control" id="descricao" placeholder="" value="<?=$competencia['descricao'];?>">
         </div>
     </div>
     <div class="row">
@@ -76,14 +78,14 @@
 <table class="table">
     <thead>
         <tr>
-        <th scope="col">Certificados</th>
+        <th scope="col">Competencia</th>
         <th scope="col">Descrição</th>
         </tr>
     </thead>
     <tbody>
     <tr>
-        <td><?php echo $certificado['certificados']; ?></td>
-        <td><?php echo $certificado['descricao']; ?></td>
+        <td><?php echo $competencia['competencia']; ?></td>
+        <td><?php echo $competencia['descricao']; ?></td>
     </tr>
   </tbody>
 </table>

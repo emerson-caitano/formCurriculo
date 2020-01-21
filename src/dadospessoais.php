@@ -1,3 +1,5 @@
+<!-- <?php require_once("dao/dadosPessoais.php"); ?> -->
+
 <?php 
     // var_dump($_GET);
     require_once("dao/db.php");
