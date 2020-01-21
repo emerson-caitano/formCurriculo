@@ -5,9 +5,9 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('certificados').insert([
         {
-          certificado: "Ensino Medio",
-          descricao: "Certificado Formação Ensino",
-          link: "http://www.certificado.com/12345",
+          certificado: "Montagem e Manutenção de Microcomputador",
+          descricao: "",
+          instituicao: "Microlins",
           usuario: 1
         }
       ]);
