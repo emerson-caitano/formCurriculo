@@ -1,4 +1,4 @@
-<!-- <?php require_once("dao/contato.php"); ?> -->
+<!-- < ?php require_once("dao/contato.php"); ?> -->
 
 <?php 
     // var_dump($_GET);

@@ -1,4 +1,4 @@
-<!-- <?php require_once("dao/idiomas.php"); ?> -->
+<!-- < ?php require_once("dao/idiomas.php"); ?> -->
 
 <?php 
     // var_dump($_GET);

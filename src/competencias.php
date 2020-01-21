@@ -1,4 +1,4 @@
-<!-- <?php require_once("dao/competencia.php"); ?> -->
+<!-- < ?php require_once("dao/competencia.php"); ?> -->
 
 <?php 
     // var_dump($_GET);

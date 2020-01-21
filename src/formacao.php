@@ -1,4 +1,4 @@
-<!-- <?php require_once("dao/formacao.php"); ?> -->
+<!-- < ?php require_once("dao/formacao.php"); ?> -->
 
 <?php 
     // var_dump($_GET);
