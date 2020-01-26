@@ -5,11 +5,15 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('certificados').insert([
         {
-          certificado: "Ensino Medio",
-          descricao: "Certificado Formação Ensino",
-          link: "http://www.certificado.com/12345",
+          descricao: "Certificado Formação Ensino", 
+          link: "http://www.certificado.com/12345", 
           usuario: 1
-        }
+        },
+        {
+          descricao: "Certificado Graduação Técnologica",
+          link: "http://www.cert.com/54321",
+          usuario: 1
+        },
       ]);
     });
 };

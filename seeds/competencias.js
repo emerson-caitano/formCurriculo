@@ -1,13 +1,11 @@
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('certificados').del()
+  return knex('competencias').del()
     .then(function () {
       // Inserts seed entries
-      return knex('certificados').insert([
+      return knex('competencias').insert([
         {
-          certificado: "Montagem e Manutenção de Microcomputador",
-          descricao: "",
-          instituicao: "Microlins",
+          descricao: "Montagem e Manutenção de Microcomputador",
           usuario: 1
         }
       ]);

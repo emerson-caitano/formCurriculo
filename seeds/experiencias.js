@@ -6,11 +6,10 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('experiencias').insert([
         {
-          experiencia: "Jovem Aprendiz",
           empresa: "IMB SA",
           cargo: "Auxiliar Administrativo",
-          dataInicial: "09/01/2010",
-          dataFinal: "20/12/2011",
+          dataInicial: "2010-01-09",
+          dataFinal: "2011-11-30",
           localizacao: "Rio de Janeiro",
           funcoes: "Escravo de todos",
           usuario: 1

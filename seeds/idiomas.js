@@ -6,9 +6,8 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('idiomas').insert([
         {
-          idioma: "Inglês",
-          nivelIdioma: "Intermediario",
-          descricao: "teste descricao",
+          nivel: "Intermediario",
+          descricao: "Ingles",
           usuario: 1
         }
       ]);
