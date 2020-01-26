@@ -29,9 +29,12 @@
             $mensagem = "Erro ao salvar";
         }
     } else{
-        $result = $mysqli->query("select * from certificados where usuario=1");
-        // $row = $result->fetch_assoc();
-        $certificado=[
+        $result = $mysqli->query("select * from certificados where usuario=1") or die(mysqli_error($cx));
+        // var_dump($result);
+        // echo("<br>");
+        $row = $result->fetch_assoc();
+        // var_dump($row);
+        $certificados=[
             "certificado" => "",
             "descricao" => "",
             "link" => "",
@@ -53,21 +56,6 @@
 <div class="container"> <!-- Certificado, Descrição e Link -->
     <h1>Certificados</h1>
     <form>
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label for="certificado">Certificado</label>
-            <input type="text" class="form-control" id="certificado" placeholder="Informe a certificação recebida" value="<?=$certificado['certificado'];?>">
-        </div>
-<!-- Desenvolver acrescentar data do certificado e vencimento do mesmo -->
-        <!-- <div class="form-group col-md-3">
-            <label for="dataCertificado">Data do Certificado</label>
-            <input type="text" class="form-control" id="dataCertificado" placeholder="00/00/0000">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="vencimentoCertificado">Vencimento do Certificado</label>
-            <input type="text" class="form-control" id="vencimentoCertificado" placeholder="00/00/0000">
-        </div> -->
-    </div>
 
     <div class="row">
         <div class="form-group col-md-6">
@@ -90,31 +78,29 @@
     </form>
     <p><?=$mensagem;?></p>
 
-
 </br>
 <table class="table">
     <thead>
         <tr>
-        <th scope="col">Certificados</th>
         <th scope="col">Descrição</th>
         <th scope="col">Link</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><?php echo $certificado['certificado']; ?></td>
             <td><?php echo $certificado['descricao']; ?></td>
             <td><?php echo $certificado['link']; ?></td>
         </tr>
     </tbody>
 </table>
 
-<?php
+
+<!-- < ?php
 var_dump($certificado);
 if ($row != NULL){
             $certificado = $row;
         }
-?>
+?> -->
 
 </div>
 

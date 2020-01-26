@@ -143,8 +143,8 @@
         <td><?php echo $experiencia['empresa']; ?></td>
         <td><?php echo $experiencia['cargo']; ?></td>
         <td><?php echo $experiencia['localizacao']; ?></td>
-        <td><?php echo $experiencia['dataIncial']; ?></td>
-        <td><?php echo $experiencia['dataFinal']; ?></td>
+        <td><?php echo date("d/m/Y", strtotime($experiencia['dataIncial'])); ?></td>
+        <td><?php echo date("d/m/Y", strtotime($experiencia['dataFinal'])); ?></td>
     </tr>
   </tbody>
 </table>

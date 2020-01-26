@@ -11,6 +11,7 @@
         "fixo" => "",
         "facebook" => "",
         "linkedin" => "",
+        "github" => "",
         "telegram" => "",
     ];
     if ($_GET != NULL){
@@ -18,7 +19,7 @@
         $sql = "insert into contatos (
             email, celular, whatsapp, fixo, facebook, linkedin, telegram, usuario
         ) values (
-            '{$_GET["email"]}', '{$_GET["celular"]}', '{$_GET["whatsapp"]}', '{$_GET["fixo"]}', '{$_GET["facebook"]}', '{$_GET["telegram"]}', 1
+            '{$_GET["email"]}', '{$_GET["celular"]}', '{$_GET["whatsapp"]}', '{$_GET["fixo"]}', '{$_GET["facebook"]}', '{$_GET["github"]}', '{$_GET["telegram"]}', 1
         )";
         echo ($sql);
         if ($mysqli->query($sql) === TRUE) {
@@ -30,6 +31,7 @@
                 "fixo" => $_GET["fixo"],
                 "facebook" => $_GET["facebook"],
                 "linkedin" => $_GET["linkedin"],
+                "github" => $_GET["github"],
                 "telegram" => $_GET["telegram"],
             ];
 
@@ -38,7 +40,7 @@
         }
     } else{
         $result = $mysqli->query("select * from contatos where usuario=1");
-        $row = $result->fetch_assoc();
+        // $row = $result->fetch_assoc();
         $contato=[
             "email" => "",
             "celular" => "",
@@ -46,6 +48,7 @@
             "fixo" => "",
             "facebook" => "",
             "linkedin" => "",
+            "github" => "",
             "telegram" => "",
         ];
     
