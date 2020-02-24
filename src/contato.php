@@ -1,5 +1,5 @@
-<!-- < ?php require_once("dao/contato.php"); ?> -->
 
+<!-- < ?php require_once("dao/contato.php"); ?> -->
 <?php 
     // var_dump($_GET);
     require_once("dao/db.php");
@@ -14,6 +14,40 @@
         "github" => "",
         "telegram" => "",
     ];
+
+    //Selecionar no banco
+    if ($_GET != NULL){
+        $sql = "SELECT * FROM contatos WHERE contato ='{$_GET["contato"]}'";
+        $result = $mysqli->query($sql);
+        $contato = $result->fetch_assoc();
+        if ($contato == NULL) {
+            $mensagem = "contato não localizado; ".$_GET["contato"];
+        }
+    }
+    
+    // Excluir do Banco
+    if ($_POST != NULL){
+        if ($_POST != NULL && $_POST["excluir"] != NULL){
+            $sql = "DELETE FROM contatos WHERE contato='{$_POST["contato"]}'";
+            if ($mysqli->query($sql) === TRUE) {
+                $mensagem = "Alterado com sucesso";
+                $contato=$_POST;
+                header('Location: /contato.php'); // voltar para mesma pagina
+            } else{
+                $mensagem = "Erro ao Excluir";
+            }
+        }
+
+    //alterando 
+    if ($_POST["contato"] != NULL){
+        $sql = "UPDATE contatos SET descricao='{$_POST["descricao"]}' WHERE contato='{$_POST["contato"]}'"; 
+        if ($mysqli->query($sql) === TRUE) {
+            $mensagem = "Alterado com sucesso";
+            $contato=$_POST;
+        } else{
+            $mensagem = "Erro ao alterar";
+        }
+
     if ($_GET != NULL){
         //salvar no banco
         $sql = "insert into contatos (
@@ -35,27 +69,15 @@
                 "telegram" => $_GET["telegram"],
             ];
 
+            header('Location: /contato.php'); // voltar para mesma pagina
+            exit;
+            
         } else{
             $mensagem = "Erro ao salvar";
         }
-    } else{
-        $result = $mysqli->query("select * from contatos where usuario=1");
-        // $row = $result->fetch_assoc();
-        $contato=[
-            "email" => "",
-            "celular" => "",
-            "whatsapp" => "",
-            "fixo" => "",
-            "facebook" => "",
-            "linkedin" => "",
-            "github" => "",
-            "telegram" => "",
-        ];
-    
-        if ($row != NULL){
-            $contato = $row;
-        }
     }
+
+    $result = $mysqli->query("select * from contato where usuario=1");
 ?>
 
 <?php require_once("cabecalho/index.php"); ?>
@@ -67,7 +89,8 @@
 
 <div class="container">
     <h1>Contato</h1>
-    <form>
+    <form action="/contato.php" method="POST">
+    <input type="hidden" name="contato" value="<?=$contato['contato'];?>">
     <div class="row">
         <div class="form-group col-md-4">
             <label for="email">E-mail</label>
@@ -123,6 +146,7 @@
 <table class="table">
     <thead>
         <tr>
+        <th scope="col">ID</th>
         <th scope="col">E-mail</th>
         <th scope="col">Celular</th>
         <th scope="col">Whatsapp</th>
@@ -134,16 +158,26 @@
         </tr>
     </thead>
     <tbody>
+    <?php while ($contato = $result->fetch_assoc()) { ?>
     <tr>
-        <td><?php echo $contato['email']; ?></td>
-        <td><?php echo $contato['celular']; ?></td>
-        <td><?php echo $contato['whatsapp']; ?></td>
-        <td><?php echo $contato['fixo']; ?></td>
-        <td><?php echo $contato['facebook']; ?></td>
-        <td><?php echo $contato['linkedin']; ?></td>
-        <td><?php echo $contato['github']; ?></td>
-        <td><?php echo $contato['telegram']; ?></td>
-    </tr>
+        <td><a href="/contato.php?contato=<?=$contato["contato"];?>"><?=$contato["contato"];?></a></td>
+        <td><?=$contato['email']; ?></td>
+        <td><?=$contato['celular']; ?></td>
+        <td><?=$contato['whatsapp']; ?></td>
+        <td><?=$contato['fixo']; ?></td>
+        <td><?=$contato['facebook']; ?></td>
+        <td><?=$contato['linkedin']; ?></td>
+        <td><?=$contato['github']; ?></td>
+        <td><?=$contato['telegram']; ?></td>
+        <td>
+            <button type="submit" value="submit" class="btn btn-primary sm-1" form="form-excluir">Excluir</button>
+        </td>
+        </tr>
+        <form action="/contato.php" method="POST" id="form-excluir">
+            <input type="hidden" name="contato" value="<?=$competencia["competencia"];?>" />
+            <input type="hidden" name="excluir" value="1" />
+        </form>
+    <?php } ?>
     </tbody>
 </table>
 

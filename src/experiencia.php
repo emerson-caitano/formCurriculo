@@ -92,8 +92,6 @@
                     </div>
                 </div>
             </div>
-
-            
             <div class="col-md-4 col-sm-5 ">
                 <div class="grupoColuna bg-secondary">
                     <div class="row">
@@ -139,6 +137,7 @@
         </tr>
     </thead>
     <tbody>
+    <?php while ($competencia = $result->fetch_assoc()) { ?>
     <tr>
         <td><?php echo $experiencia['empresa']; ?></td>
         <td><?php echo $experiencia['cargo']; ?></td>
@@ -146,7 +145,7 @@
         <td><?php echo date("d/m/Y", strtotime($experiencia['dataIncial'])); ?></td>
         <td><?php echo date("d/m/Y", strtotime($experiencia['dataFinal'])); ?></td>
     </tr>
-  </tbody>
+    </tbody>
 </table>
 
 </div>

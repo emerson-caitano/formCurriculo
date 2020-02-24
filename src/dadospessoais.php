@@ -1,46 +1,80 @@
 <!-- < ?php require_once("dao/dadosPessoais.php"); ?> -->
 
 <?php 
-    // var_dump($_GET);
     require_once("dao/db.php");
     $mensagem = "";
-    $dadoPessoal=[
+    $dadoPessoal=[ //ao inves de adicionar uma nova coluna ma tabela, como associar o usuario a esse cara?
+        "dadoPessoal" => "",
         "nome" => "",
         "titulo" => "",
         "estado" => "",
     ];
+
+    //Selecionar no banco
     if ($_GET != NULL){
-        //salvar no banco
+        $sql = "SELECT * FROM competencias WHERE competencia ='{$_GET["competencia"]}'";
+        $result = $mysqli->query($sql);
+        $competencia = $result->fetch_assoc();
+        if ($competencia == NULL) {
+            $mensagem = "Competencia não localizada; ".$_GET["competencia"];
+        }
+    }
+    
+    // Excluir do Banco
+    if ($_POST != NULL){
+        if ($_POST != NULL && $_POST["excluir"] != NULL){
+            $sql = "DELETE FROM competencias WHERE competencia='{$_POST["competencia"]}'";
+            if ($mysqli->query($sql) === TRUE) {
+                $mensagem = "Alterado com sucesso";
+                $competencia=$_POST;
+                header('Location: /competencias.php'); // voltar para mesma pagina
+            } else{
+                $mensagem = "Erro ao Excluir";
+            }
+        }
+
+    //alterando 
+    if ($_POST["competencia"] != NULL){
+        $sql = "UPDATE competencias SET descricao='{$_POST["descricao"]}' WHERE competencia='{$_POST["competencia"]}'"; 
+        if ($mysqli->query($sql) === TRUE) {
+            $mensagem = "Alterado com sucesso";
+            $competencia=$_POST;
+        } else{
+            $mensagem = "Erro ao alterar";
+        }
+
+    //salvar no banco
+    if ($_GET != NULL){
         $sql = "insert into dadosPessoais (
-            nome, titulo, estado, usuario
+            nome, 
+            titulo, 
+            estado, 
+            usuario
         ) values (
-            '{$_GET["nome"]}', '{$_GET["titulo"]}', '{$_GET["estado"]}', 1
+            '{$_GET["nome"]}', 
+            '{$_GET["titulo"]}', 
+            '{$_GET["estado"]}', 
+            1
         )";
-        echo ($sql);
         if ($mysqli->query($sql) === TRUE) {
             $mensagem = "Salvo com sucesso";
             $dadoPessoal=[
+                "dadoPessoal" => $mysqli->insert_id,
                 "nome" => $_GET["nome"],
                 "titulo" => $_GET["titulo"],
                 "estado" => $_GET["estado"],
             ];
 
         } else{
-            $mensagem = "Erro ao salvar";
+            echo($mysqli->error);
+            $mensagem = $mysqli->error;
         }
-    } else{
-        $result = $mysqli->query("select * from dadosPessoais where usuario=1");
-        $row = $result->fetch_assoc();
-        $dadoPessoal=[
-            "nome" => "",
-            "titulo" => "",
-            "estado" => "",
-        ];
-    
-        if ($row != NULL){
-            $dadoPessoal = $row;
-        }
+        // header('Location: /dadospessoais.php'); // voltar para mesma pagina
+        
+        
     }
+
+$result = $mysqli->query("select * from dadosPessoais where usuario=1");
 ?>
 
 <?php require_once("cabecalho/index.php"); ?>
@@ -52,7 +86,8 @@
 
 <div class="container">
     <h1>Dados Pessoais</h1>
-    <form action="/dadosPessoais.php" method="get">
+    <form action="/dadospessoais.php" method="POST">
+    <input type="hidden" name="dadoPesssoal" value="<?=$dadoPessoal['dadoPessoal'];?>">
     <div class="form-group">
         <label for="nome">Nome Completo</label>
         <input type="text" class="form-control" name="nome" id="nome" value="<?=$dadoPessoal['nome'];?>">
@@ -74,13 +109,40 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-auto"> 
+            <button type="reset" class="btn btn-primary mb-2">Novo</button>
+        </div>
         <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-2">Salvar</button>
+            <button type="submit" value="salvar" class="btn btn-primary mb-2">Salvar</button>
         </div>
     </div>
     </form>
+
     <p><?=$mensagem;?></p>
 
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Resumo</th>
+                <th scope="col">Localização</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php  while ($dadoPessoal = $result->fetch_assoc()) { ?>
+                <tr>
+                    <td><a href="/dadospessoais.php?dadoPessoal=<?=$dadoPessoal["dadoPessoal"];?>"><?=$dadoPessoal["dadoPessoal"];?></a></td>
+                    <td><?=$dadoPessoal["nome"];?></td>
+                    <td><?=$dadoPessoal["titulo"];?></td>
+                    <td><?=$dadoPessoal["estado"];?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+
 </div>
+
 
 <?php require_once("footer/footer.php"); ?>

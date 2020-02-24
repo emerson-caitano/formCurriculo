@@ -1,7 +1,7 @@
 
 exports.up = function(knex) {
     return knex.schema.alterTable('dadosPessoais', table => {
-        table.integer('usuario').notNullable().unique()
+        table.integer('usuario').notNullable()
     })
 };
 
