@@ -8,7 +8,7 @@
     "gulp": "^4.0.2",
     "gulp-connect-php": "^1.0.3",
     "gulp-livereload": "^4.0.2",
-    "knex": "^0.20.1",
+    "knex": "^2.4.0",
     "mysql2": "^2.0.0"
   },
   "devDependencies": {},
